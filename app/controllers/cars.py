@@ -57,8 +57,9 @@ async def update_car_endpoint(
         raise HTTPException(status_code=401, detail="Usuário não autenticado")  
     
     try:
-        s3.upload_fileobj(imagem.file, BUCKET_NAME, imagem.filename)
-        imagem = f"https://{BUCKET_NAME}.s3.amazonaws.com/{imagem.filename}"
+        if imagem:
+            s3.upload_fileobj(imagem.file, BUCKET_NAME, imagem.filename)
+            imagem = f"https://{BUCKET_NAME}.s3.amazonaws.com/{imagem.filename}"
     except NoCredentialsError:
         raise HTTPException(status_code=500, detail="Erro de autenticação no S3")
     
