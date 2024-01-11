@@ -53,7 +53,7 @@ def authenticate_user(username: str, password: str, db: Depends(get_db)):
 
 router = APIRouter()
 
-@router.post("/token")
+@router.post("/login")
 async def login_for_access_token(
     form_data: OAuth2PasswordRequestForm = Depends(),
     db: Session = Depends(get_db),
