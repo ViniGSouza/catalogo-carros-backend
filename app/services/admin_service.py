@@ -1,5 +1,4 @@
 from app.models.user import User
-from fastapi import Depends
 from app.database import get_db
 
 def create_admin(username: str, password: str):

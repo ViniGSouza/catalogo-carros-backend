@@ -1,6 +1,7 @@
 from sqlalchemy import Column, Integer, String
 from app.database import Base
 from passlib.context import CryptContext
+from pydantic import BaseModel
 
 
 password_hashing = CryptContext(schemes=["bcrypt"], deprecated="auto")
@@ -24,3 +25,7 @@ class User(Base):
         db.commit()
         db.refresh(user)
         return user
+
+class CreateUser(BaseModel):
+    username: str
+    password: str
