@@ -17,7 +17,7 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 30
 
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="login")
 password_hashing = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
 def get_current_user(token: str = Depends(oauth2_scheme)):
