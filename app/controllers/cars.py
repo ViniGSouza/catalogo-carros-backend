@@ -5,7 +5,7 @@ from app.services.cars_service import read_cars, create_car, update_car, delete_
 from app.models.car import CarResponse
 from typing import List, Optional
 from app.database import get_db
-from app.controllers.token import get_current_user
+from app.controllers.user import get_current_user
 from dotenv import load_dotenv
 import boto3
 import os
