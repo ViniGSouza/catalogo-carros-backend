@@ -2,8 +2,8 @@ from fastapi import HTTPException
 from sqlalchemy.orm import Session
 from app.models.car import Car, CarResponse
 
-def read_cars(db: Session, skip: int = 0, limit: int = 10):
-    cars = db.query(Car).offset(skip).limit(limit).all()
+def read_cars(db: Session):
+    cars = db.query(Car).order_by(Car.valor).all()
     return [CarResponse(**car.__dict__) for car in cars]
 
 def create_car(db: Session, nome: str, descricao: str, valor: float, imagem_url: str):

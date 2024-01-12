@@ -20,8 +20,8 @@ s3 = boto3.client('s3', aws_access_key_id=AWS_ACCESS_KEY, aws_secret_access_key=
 router = APIRouter()
 
 @router.get("/carros", response_model=List[CarResponse])
-async def read_cars_endpoint(skip: int = 0, limit: int = 10, db: Session = Depends(get_db)):
-    return read_cars(db, skip, limit)
+async def read_cars_endpoint(db: Session = Depends(get_db)):
+    return read_cars(db)
 
 @router.post("/carros", response_model=CarResponse)
 async def create_car_endpoint(
